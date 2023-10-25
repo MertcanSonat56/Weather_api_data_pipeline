@@ -20,7 +20,7 @@ weather_dyf = glueContext.create_dynamic_frame.from_options(
     connection_type="s3",
     format="csv",
     connection_options={
-        "paths": ["s3://airflowoutputtos3bucket/raw/weather_api_data.csv"],
+        "paths": ["s3://Your path/raw/weather_api_data.csv"],
         "recurse": True,
     },
     transformation_ctx="weather_dyf",
@@ -52,9 +52,9 @@ redshift_output = glueContext.write_dynamic_frame.from_options(
     frame=changeschema_weather_dyf,
     connection_type="redshift",
     connection_options={
-        "redshiftTmpDir": "s3://aws-glue-assets-312546342345-eu-north-1/temporary/",
+        "redshiftTmpDir": "Your s3 Bucket/temporary/",
         "useConnectionProperties": "true",
-        "aws_iam_role": "arn:aws:iam::722998440897:role/dataproject-RedshiftIamRole-1U4N71H3BD28P",
+        "aws_iam_role": "Your RedshiftIamRole ",
         "dbtable": "public.weather_data",
         "connectionName": "redshift-demo-connection",
         "preactions": "DROP TABLE IF EXISTS public.weather_data; CREATE TABLE IF NOT EXISTS public.weather_data (dt VARCHAR, weather VARCHAR, visibility VARCHAR, temp VARCHAR, feels_like VARCHAR, min_temp VARCHAR, max_temp VARCHAR, pressure VARCHAR, sea_level VARCHAR, ground_level VARCHAR, humidity VARCHAR, wind VARCHAR);",
