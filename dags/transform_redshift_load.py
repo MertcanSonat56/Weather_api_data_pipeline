@@ -18,7 +18,7 @@ dag = DAG('transform_redshift_dag', default_args=default_args, schedule_interval
 transform_task = GlueJobOperator(
     task_id='transform_task',
     job_name='glue_transform_task',
-    script_location='s3://aws-glue-assets-312546342345-eu-north-1/scripts/transform.py',
+    script_location='Your  s3 bucket path /scripts/transform.py',
     s3_bucket='YOUR s3 Bucket',  # S3 bucket where logs and local etl script will be uploaded
     aws_conn_id='AWS_CONN',  # You'll need to set up an AWS connection in Airflow
     region_name="us-east-1",
