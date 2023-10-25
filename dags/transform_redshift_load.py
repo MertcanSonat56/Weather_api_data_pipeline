@@ -19,10 +19,10 @@ transform_task = GlueJobOperator(
     task_id='transform_task',
     job_name='glue_transform_task',
     script_location='s3://aws-glue-assets-312546342345-eu-north-1/scripts/transform.py',
-    s3_bucket='s3://aws-glue-assets-312546342345-eu-north-1',  # S3 bucket where logs and local etl script will be uploaded
+    s3_bucket='YOUR s3 Bucket',  # S3 bucket where logs and local etl script will be uploaded
     aws_conn_id='AWS_CONN',  # You'll need to set up an AWS connection in Airflow
     region_name="us-east-1",
-    iam_role_name='dataproject-RedshiftIamRole-1U4N71H3BD28P',
+    iam_role_name='YOUR RedshiftIamRole ',
     create_job_kwargs ={"GlueVersion": "4.0", "NumberOfWorkers": 4, "WorkerType": "G.1X", "Connections":{"Connections":["redshift-demo-connection"]},},
     dag=dag,
 )
